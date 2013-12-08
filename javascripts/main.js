@@ -1,1 +1,19 @@
-console.log('This would be the main JS file.');
+
+if(!exports && !exports.format){
+  exports = exports || {};
+  exports.format = function(){ 
+    return "Oops, something went wrong with the page load - sorry about that. Please report in the github issues";
+  };
+
+}
+
+formatException = exports.format;
+
+
+function ExBeautifierCtrl($scope) {
+
+  $scope.$watch('exInput', function() {
+    $scope.exOutput = formatException($scope.exInput);
+  });
+
+}
